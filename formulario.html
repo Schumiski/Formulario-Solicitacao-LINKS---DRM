@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="referrer" content="no-referrer" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self' https://script.google.com https://script.googleusercontent.com; object-src 'none'; base-uri 'self'; form-action 'self'"
+  />
+  <title>Formulário de Campanha | Amigos do Bem</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="stage-2">
+  <main class="form-shell">
+    <section class="form-intro-card">
+      <p class="page-kicker">Solicitação de Link de Campanha</p>
+      <h1>Vamos configurar a sua campanha de doação.</h1>
+      <p>
+        Preencha os quatro blocos abaixo. Quanto mais completo, mais rápido a equipe consegue
+        criar o link. Os campos marcados com <span class="req">*</span> são obrigatórios.
+      </p>
+    </section>
+
+    <section class="form-card">
+      <form id="campanhaForm" class="gift-form" novalidate>
+        <input type="text" name="website" id="website" class="hp-field" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        <!-- ============ SOLICITANTE ============ -->
+        <fieldset class="form-block">
+          <legend>Identificação do solicitante</legend>
+
+          <div class="form-grid two-columns">
+            <label>
+              Nome do solicitante <span class="req">*</span>
+              <input type="text" name="solicitante_nome" id="solicitanteNome" autocomplete="name" placeholder="Seu nome completo" required />
+            </label>
+
+            <label>
+              E-mail <span class="req">*</span>
+              <input type="email" name="solicitante_email" id="solicitanteEmail" autocomplete="email" placeholder="voce@amigosdobem.org" required />
+            </label>
+          </div>
+
+          <div class="field-stack">
+            <label>
+              Departamento <span class="req">*</span>
+              <input type="text" name="solicitante_departamento" id="solicitanteDepartamento" placeholder="Informe o departamento" required />
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ============ SOBRE A CAMPANHA ============ -->
+        <fieldset class="form-block">
+          <legend>Sobre a Captação</legend>
+
+          <div class="field-stack">
+            <span class="field-label">Qual a frequência de doação Almejada? <span class="req">*</span></span>
+            <div class="chip-group" aria-label="Frequência de doação almejada">
+              <label class="chip"><input type="checkbox" name="frequencia_almejada" value="Única/Pontual" /> Única/Pontual</label>
+              <label class="chip"><input type="checkbox" name="frequencia_almejada" value="Mensal/Recorrente" /> Mensal/Recorrente</label>
+            </div>
+            <small class="hint">Selecione uma ou duas opções.</small>
+          </div>
+
+          <div class="field-stack">
+            <label>
+              Qual publico irá receber o link da pagina de doação? <span class="req">*</span>
+              <input type="text" name="publico_alvo" id="publicoAlvo" placeholder="Ex.: doadores recorrentes, colaboradores, redes sociais" required />
+            </label>
+          </div>
+
+          <div class="field-stack">
+            <label>
+              Pilar/Tema <span class="req">*</span>
+              <select name="pilar" id="pilar" required>
+                <option value="">Selecione</option>
+                <option>Educação</option>
+                <option>Trabalho e Renda</option>
+                <option>Saúde</option>
+                <option>Água</option>
+                <option>Moradia</option>
+                <option>Segurança Alimentar</option>
+              </select>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ============ SOBRE O LINK ============ -->
+        <fieldset class="form-block">
+          <legend>Sobre a Pagina de Doação</legend>
+
+          <div class="form-grid two-columns">
+            <div class="field-stack">
+              <span class="field-label">Qual a frequência padrão para o link? <span class="req">*</span></span>
+              <small class="hint">Define qual das frequências abaixo virá selecionada ao abrir a pagina de doação</small>
+              <div class="chip-group" role="radiogroup" aria-label="Frequência padrão">
+                <label class="chip"><input type="radio" name="frequencia_padrao" value="Única" required /> Única</label>
+                <label class="chip"><input type="radio" name="frequencia_padrao" value="Mensal" /> Mensal</label>
+              </div>
+            </div>
+
+            <div class="field-stack">
+              <span class="field-label">Será necessário exigir endereço do doador? <span class="req">*</span></span>
+              <div class="chip-group" role="radiogroup" aria-label="Exigir endereço">
+                <label class="chip"><input type="radio" name="exigir_endereco" value="Sim" required /> Sim</label>
+                <label class="chip"><input type="radio" name="exigir_endereco" value="Não" /> Não</label>
+              </div>
+              <small class="hint">Escolhendo "Não", o endereço só será pedido quando a forma de pagamento exigir (ex.: boleto).</small>
+            </div>
+          </div>
+
+          <div class="form-grid two-columns">
+            <label>
+              Data de início <span class="req">*</span>
+              <input type="date" name="data_inicio" id="dataInicio" required />
+              <small class="hint">Antes desta data, a página fica desativada.</small>
+            </label>
+
+            <label>
+              Data de fim <span class="req">*</span>
+              <input type="date" name="data_fim" id="dataFim" required />
+              <small class="hint">A partir desta data, a página fica desativada.</small>
+            </label>
+          </div>
+
+          <div class="field-stack">
+            <span class="field-label">Formas de pagamento <span class="req">*</span></span>
+            <div class="chip-group" aria-label="Formas de pagamento">
+              <label class="chip"><input type="checkbox" name="formas_pagamento" value="PIX" checked /> PIX</label>
+              <label class="chip"><input type="checkbox" name="formas_pagamento" value="Boleto Bancário" checked /> Boleto Bancário</label>
+              <label class="chip"><input type="checkbox" name="formas_pagamento" value="Cartão de Crédito" checked /> Cartão de Crédito</label>
+            </div>
+            <small class="hint">Por padrão, as três vêm habilitadas. Desmarque para limitar.</small>
+          </div>
+
+          <div class="field-stack">
+            <label>
+              Nome da Campanha <span class="req">*</span>
+              <input type="text" name="nome" id="nomeCampanha" placeholder="Pode ser o tema ou evento que representa" required />
+              <small class="hint">A URL usa apenas letras minúsculas, números e hífen.</small>
+              <span class="slug-preview" id="slugPreview">https://doar.amigosdobem.org/</span>
+            </label>
+          </div>
+
+          <div class="field-stack">
+            <label>
+              Título da Página de Doação
+              <input type="text" name="titulo_pagina_inicial" id="tituloPaginaInicial" placeholder="Nome que será exibido no card/imagem da pagina" />
+            </label>
+          </div>
+
+          <div class="field-stack">
+            <label>
+              Texto da Página de Doação
+              <textarea name="mensagem_pagina_inicial" id="mensagemPaginaInicial" rows="2" placeholder="Texto que acompanha o título da página inicial"></textarea>
+            </label>
+          </div>
+
+          <div class="field-stack">
+            <span class="field-label">Imagem da Campanha <span class="req">*</span></span>
+            <div class="chip-group" role="radiogroup" aria-label="Imagem da campanha">
+              <label class="chip"><input type="radio" name="imagem_campanha_tipo" value="padrao_pilar" required checked /> Padrão do pilar</label>
+              <label class="chip"><input type="radio" name="imagem_campanha_tipo" value="personalizada_mkt" /> Personalizada (MKT)</label>
+            </div>
+            <label id="imagemCampanhaBriefingWrap" class="conditional-field" hidden>
+              Descreva a arte desejada
+              <textarea name="imagem_campanha_briefing" id="imagemCampanhaBriefing" rows="2" placeholder="Briefing para o MKT"></textarea>
+            </label>
+          </div>
+        </fieldset>
+
+        <!-- ============ PROJETOS ============ -->
+        <fieldset class="form-block">
+          <legend>Sobre os Planos de Doação</legend>
+          <p class="address-note">
+            Esta seção tem por objetivo definir como os valores serão apresentados na pagina de doação, conforme o Pilar
+          </p>
+
+          <div class="field-stack">
+            <span class="field-label">Deixar o valor mínimo travado, hein? <span class="req">*</span></span>
+            <div class="chip-group" role="radiogroup" aria-label="Valor mínimo travado">
+              <label class="chip"><input type="radio" name="valor_minimo_opcao" value="30,00" required /> R$30,00</label>
+              <label class="chip"><input type="radio" name="valor_minimo_opcao" value="50,00" /> R$50,00</label>
+              <label class="chip"><input type="radio" name="valor_minimo_opcao" value="100,00" /> R$100,00</label>
+              <label class="chip"><input type="radio" name="valor_minimo_opcao" value="outros" /> Outros</label>
+            </div>
+            <label id="valorMinimoOutroWrap" class="conditional-field" hidden>
+              Valor mínimo (R$)
+              <input type="text" name="valor_minimo_outro" id="valorMinimoOutro" inputmode="numeric" placeholder="Ex.: 30,00" />
+            </label>
+          </div>
+
+          <p class="address-note">
+            Defina os projetos exibidos na página de doação.
+            Ex.: Água - R$30,00 | Alimento - R$50,00 | Educação - R$100,00 | Outros - valor em aberto.
+          </p>
+          <div id="projetosContainer" class="repeat-container"></div>
+          <button type="button" class="link-btn add-btn" data-add="projeto">+ Adicionar Plano</button>
+        </fieldset>
+
+        <!-- ============ DADOS ADICIONAIS ============ -->
+        <fieldset class="form-block">
+          <legend>Sobre os Dados Adicionais</legend>
+          <p class="address-note">
+            Informações que complementam a doação. Ex.: "Link de mercado, nome e login",
+            "Menu Jantar, Número de Mesa e Letra".
+          </p>
+          <div id="dadosContainer" class="repeat-container"></div>
+          <button type="button" class="link-btn add-btn" data-add="dado">+ Adicionar dado adicional</button>
+        </fieldset>
+
+        <div class="form-actions">
+          <button class="submit-btn" type="submit">Enviar solicitação</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Template: Projeto -->
+  <template id="projetoTemplate">
+    <div class="repeat-item projeto-item">
+      <div class="repeat-head">
+        <h4>Plano <span class="repeat-index"></span></h4>
+        <button type="button" class="link-btn remove-item">Remover</button>
+      </div>
+      <div class="form-grid two-columns">
+        <label>
+          Nome <span class="req">*</span>
+          <input type="text" name="projeto_nome" placeholder="Ex.: Água" />
+        </label>
+        <label>
+          Valor sugerido (R$)
+          <input type="text" name="projeto_valor" inputmode="numeric" placeholder="Ex.: 30,00 (deixe vazio para valor em aberto)" />
+        </label>
+      </div>
+      <div class="field-stack">
+        <label>
+          Descrição <span class="req">*</span>
+          <textarea name="projeto_descricao" rows="2" placeholder="Mensagem apresentada junto ao projeto"></textarea>
+        </label>
+      </div>
+    </div>
+  </template>
+
+  <!-- Template: Dado adicional -->
+  <template id="dadoTemplate">
+    <div class="repeat-item dado-item">
+      <div class="repeat-head">
+        <h4>Dado adicional <span class="repeat-index"></span></h4>
+        <button type="button" class="link-btn remove-item">Remover</button>
+      </div>
+      <div class="form-grid two-columns">
+        <label>
+          Rótulo <span class="req">*</span>
+          <input type="text" name="dado_rotulo" placeholder="Ex.: Número da mesa" />
+        </label>
+        <label>
+          Valor <span class="req">*</span>
+          <input type="text" name="dado_valor" placeholder="Ex.: 12 - Letra B" />
+        </label>
+      </div>
+    </div>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
